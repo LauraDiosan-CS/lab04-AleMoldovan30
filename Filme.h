@@ -1,22 +1,34 @@
 #pragma once
 #include <ostream>
 
-using namespace std;
+class Filme {
+	private:
+		char* date;
+		char* name;
+		char* gen;
 
-class Filme
-{
-    private:
-        char* name;
-    public:
-        Filme();
-        Filme(char* name);
-        Filme(const Filme& s);
-        ~Filme();
-        char* getName();
-        void setName(char* name);
-        Filme& operator = (const Filme& s);
-        bool operator == (const Filme& s);
-        friend ostream& operator<<(ostream& os, const Filme& s);
+	public:
+		Filme();//constructor implicit
+		Filme(char*, char*, char*);//constructor de initializare
+		Filme(const Filme&);//constructor de copiere
+		~Filme();//destructor
+
+	//Getters
+
+		char* get_name();
+		char* get_date();
+		char* get_gen();
+
+	//Setters
+
+		void set_name(char*);
+		void set_date(char*);
+		void set_gen(char*);
+
+	//Overwrite operators '=' , "==" and "<<"
+
+		Filme& operator =(const Filme&);
+		bool operator==(const Filme&);
+		friend std::ostream& operator << (std::ostream&, const Filme&);
 
 };
-
